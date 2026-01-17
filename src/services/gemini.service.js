@@ -3,7 +3,7 @@ import config from "../config/config.js";
 
 export async function askGemini(prompt) {
   try {
-    const finalPrompt = `Jawab dengan singkat dan padat. Pertanyaan: ${prompt}`;
+    const finalPrompt = `${prompt}`;
 
     const body = {
       contents: [
