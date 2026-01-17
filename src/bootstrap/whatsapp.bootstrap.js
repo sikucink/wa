@@ -10,8 +10,9 @@ export function initWhatsapp(whatsappConfig) {
   const client = createWhatsappClient(whatsappConfig);
 
   client.on(WHATSAPP_EVENTS.QR, (qr) => {
-    console.log("📱 Scan QR Code:");
-    qrcodePkg.generate(qr, { small: true });
+    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(qr)}`;
+    console.log("🔗 Scan QR via browser:");
+    console.log(qrUrl);
   });
 
   client.once(WHATSAPP_EVENTS.AUTH_FAILURE, (message) => {
