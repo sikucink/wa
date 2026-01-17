@@ -8,7 +8,11 @@ export function createWhatsappClient(whatsappConfig) {
       dataPath: whatsappConfig.auth.sessionPath,
     }),
     deviceName: whatsappConfig.deviceName,
-    puppeteer: whatsappConfig.puppeteer,
+    puppeteer: {
+      executablePath: process.env.CHROME_PATH,
+      headless: true,
+      args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
+    },
     // temp
     webVersionCache: {
       type: "remote",
